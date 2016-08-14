@@ -3,11 +3,11 @@
 						  in the file nodes.txt (Nastran format)
 						  and writes the node set to the file surfacenodes.blk
 
-	Written by:  Kyle R. Myers
-				 Applied Research Laboratory
-				 The Pennsylvania State University
-				 University Park, PA 16804
-				 December 2015
+				Written by:  Kyle R. Myers
+				Applied Research Laboratory
+				The Pennsylvania State University
+				University Park, PA 16804
+				December 2015
 */
 
 #include <stdio.h>
@@ -52,6 +52,8 @@ int main()
 			nNodes = nNodes + 1;
 		}
 	}
+
+	// add a set postion to delete out the end comma here
 
 	fclose(fi);
 	fclose(fo);
