@@ -30,7 +30,7 @@ int main()
 		return(1);
 	}
 
-	fprintf(fo, "%s", "SET 1 = ");
+	fprintf(fo, "%s\n", "SET 1 = ");
 	while (fgets(entry, 9, fi)) {
 
 		if (strcmp(entry, "GRID    ") == 0) {
@@ -38,20 +38,21 @@ int main()
 			int gridID = atoi(entry);
 
 			if (col <= 8) {
-				fprintf(fo, "%i", gridID);
-				fprintf(fo, "%s", ",");
+				fprintf(fo, "%8i%s", gridID,",");
 			}
 
 			else {
-				fprintf(fo, "%s\n","");
-				fprintf(fo, "%i", gridID);
-				fprintf(fo, "%s", ",");
+				fprintf(fo, "%s\n%8i%s","",gridID,",");
 				col = 1;
 			}
-			col = col + 1;
-			nNodes = nNodes + 1;
+			++col;
+			++nNodes;
 		}
 	}
+
+	// delete the end comma	
+	fseek(fo,-1,SEEK_CUR);
+	fprintf(fo, "%s\n"," ");
 
 	fclose(fi);
 	fclose(fo);
@@ -63,4 +64,3 @@ int main()
 
 	return(0);
 }
-
